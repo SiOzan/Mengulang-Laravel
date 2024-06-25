@@ -1,7 +1,7 @@
 <aside class="sidebar-wrapper" data-simplebar="true">
         <div class="sidebar-header">
             <div class="logo-icon">
-                <img src="assets/images/logo-icon.png" class="logo-img" alt="">
+                <img src="{{asset('backend/assets/images/logo-icon.png')}}" class="logo-img" alt="">
             </div>
             <div class="logo-name flex-grow-1">
                 <h5 class="mb-0">Maxton</h5>
@@ -13,6 +13,13 @@
         <div class="sidebar-nav">
             <!--navigation-->
             <ul class="metismenu" id="sidenav">
+                <li>
+                    <a href=" {{route('user.index') }}">
+                        <div class="parent-icon"><i class="material-icons-outlined">inventory_2</i>
+                        </div>
+                        <div class="menu-title">ACL</div>
+                    </a>
+                </li>
                 <li>
                     <a href="javascript:;" class="has-arrow">
                         <div class="parent-icon"><i class="material-icons-outlined">home</i>

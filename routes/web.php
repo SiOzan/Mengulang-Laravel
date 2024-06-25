@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\BrandController;
 
 /*
@@ -14,17 +16,21 @@ use App\Http\Controllers\BrandController;
 |
 */
 
+Route::group(['prefix' => 'admin'], function(){
+    Route::resource('user', UserController::class);
+});
+
 Route::get('/', function () {
-    return view('layouts.backend');
-})->middleware('auth');
+    return view('welcome');
+});
 
 Auth::routes(
-    ['register' => false]
+    // ['register' => false]
 );
 
 Route::get('data', function(){
     return view('data');
-});
+})->middleware('auth');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
