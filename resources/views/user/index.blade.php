@@ -25,9 +25,13 @@
 						<td>{{$data->email}}</td>
 						<td>{{$data->is_admin ? 'Admin' : 'User'}}</td>
 						<td>
-                            <a href="{{ route('user.show', $data->id) }}" class="btn btn-primary raised gap-2"><i class="material-icons-outlined">search</i></a>
-                            <a href="{{ route('user.edit', $data->id) }}" class="btn btn-warning raised"><i class="material-icons-outlined">cloud_upload</i>EDIT</a>
-                            <button type="button" class="btn btn-danger raised"><i class="material-icons-outlined">delete</i>HAPUS</button>
+                            <form action="{{route('user.destroy', $data->id)}}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <a href="{{ route('user.show', $data->id) }}" class="btn btn-primary raised gap-2"><i class="material-icons-outlined">search</i></a>
+                                <a href="{{ route('user.edit', $data->id) }}" class="btn btn-warning raised"><i class="material-icons-outlined">cloud_upload</i>EDIT</a>
+                                <button type="submit" class="btn btn-dark raised gap-2"><i class="material-icons-outlined" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">delete</i></button>
+                            </form>
                         </td>
 					</tr>
                     @endforeach
